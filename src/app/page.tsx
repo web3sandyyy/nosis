@@ -1,8 +1,8 @@
-
+import Categories from "@/components/Categories";
 export default function Home() {
   return (
-    <div className="" >
-      hELLO WORLD
+    <div className="w-full h-full p-6 bg-secondary" >
+      <Categories />
     </div>
   );
 }

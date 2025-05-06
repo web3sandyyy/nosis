@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Search, X, Languages, User } from "lucide-react";
+import { Search, X, Languages } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ const Header = () => {
   const [search, setSearch] = useState("");
 
   return (
-    <div className="flex justify-end p-4 bg-primary gap-6">
+    <div className="flex justify-end p-4 bg-primary gap-6 shadow-sm shadow-black border-b border-black/10">
       <div className="bg-white rounded-md flex items-center px-2 w-3/5 max-w-[350px]">
         <Search className="w-5 h-5 text-black/50" />
         <input
@@ -44,9 +44,9 @@ const Header = () => {
             <SelectItem value="system">System</SelectItem>
           </SelectContent>
         </Select>
-        <div className="p-2 rounded-full bg-blueAccent">
-          <User className="w-5 h-5 text-white" />
-        </div>
+        <button className="p-1 text-sm font-medium rounded-md text-white px-4 bg-blueAccent hover:bg-blueAccent/80">
+          Sign In
+        </button>
       </div>
 
       {/* <div>
