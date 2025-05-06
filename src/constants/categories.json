@@ -1,0 +1,113 @@
+{
+  "total_categories": 18,
+  "categories": [
+    {
+      "name": "Start-up & Entrepreneurship",
+      "url": "https://www.nosisapp.com/category/start-up-&-entrepreneurship-Ck2gT5vUNryWyVWosUvb",
+      "id": "Ck2gT5vUNryWyVWosUvb",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FStart-up%20%26%20Entrepreneurship%2Ficon.svg%2Bxml?alt=media&token=8d64693d-e82f-472b-ad06-b5275d92f494"
+    },
+    {
+      "name": "Philosophy",
+      "url": "https://www.nosisapp.com/category/philosophy-GXgsywoinEiNf3alDPKL",
+      "id": "GXgsywoinEiNf3alDPKL",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FPhilosophy%2Ficon.svg%2Bxml?alt=media&token=021e9c4d-073a-483b-8ed7-186a640aa677"
+    },
+    {
+      "name": "Personal Development",
+      "url": "https://www.nosisapp.com/category/personal-development--J7jXxFZtEASZ2aAsTMsL",
+      "id": "J7jXxFZtEASZ2aAsTMsL",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FPersonal%20Development%20%2Ficon.svg%2Bxml?alt=media&token=cc543f58-6c3d-41fb-a716-f2171667ebf5"
+    },
+    {
+      "name": "Fiction",
+      "url": "https://www.nosisapp.com/category/fiction-OcILMRJBH5C6qgk3zSr4",
+      "id": "OcILMRJBH5C6qgk3zSr4",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FFiction%2Ficon.svg%2Bxml?alt=media&token=9d914dc6-6ec1-4ac4-9fe6-896ed4f7f8ee"
+    },
+    {
+      "name": "Science & Technology",
+      "url": "https://www.nosisapp.com/category/science-&-technology-SP8N5UEjVP1qesWw5Pen",
+      "id": "SP8N5UEjVP1qesWw5Pen",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FScience%20%26%20Technology%2Ficon.svg%2Bxml?alt=media&token=e055eef8-a270-4e7e-b62c-06a6f3637d2e"
+    },
+    {
+      "name": "Leadership",
+      "url": "https://www.nosisapp.com/category/leadership-WD8HMrDBhNTo3KeNPV7W",
+      "id": "WD8HMrDBhNTo3KeNPV7W",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FLeadership%2Ficon.svg%2Bxml?alt=media&token=51dc5fb8-20c2-4edf-b7b3-0d8b57415fcb"
+    },
+    {
+      "name": "Productivity",
+      "url": "https://www.nosisapp.com/category/productivity-Xjj4ufZO6GBfoXWBRKLm",
+      "id": "Xjj4ufZO6GBfoXWBRKLm",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FProductivity%2Ficon.svg%2Bxml?alt=media&token=30ae658c-ff4d-47e6-9b55-760e60e68e38"
+    },
+    {
+      "name": "Spirituality",
+      "url": "https://www.nosisapp.com/category/spirituality-dQSKlL4CMigrgc0ourRV",
+      "id": "dQSKlL4CMigrgc0ourRV",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FSpirituality%2Ficon.svg%2Bxml?alt=media&token=5051aed8-6a7c-4366-9750-b89c06f3c2c5"
+    },
+    {
+      "name": "Business",
+      "url": "https://www.nosisapp.com/category/business-eGXrwcNgs0Mxhj9XgpNj",
+      "id": "eGXrwcNgs0Mxhj9XgpNj",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FBusiness%2Ficon.svg%2Bxml?alt=media&token=77527d3c-16b0-4076-9db9-921cb93e465d"
+    },
+    {
+      "name": "Global Politics",
+      "url": "https://www.nosisapp.com/category/global-politics-eX8qU95CsbccoSPYfbJX",
+      "id": "eX8qU95CsbccoSPYfbJX",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FGlobal%20Politics%2Ficon.svg%2Bxml?alt=media&token=56db0ae4-8411-4300-9156-15f108ab4970"
+    },
+    {
+      "name": "Lifestyle",
+      "url": "https://www.nosisapp.com/category/lifestyle-jfcYqfWxgyXsaZwiTEQk",
+      "id": "jfcYqfWxgyXsaZwiTEQk",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FLifestyle%2Ficon.svg%2Bxml?alt=media&token=223e73fa-bbed-4858-bb62-7ed44f9a04ac"
+    },
+    {
+      "name": "Romance",
+      "url": "https://www.nosisapp.com/category/romance-juuKlbDvnBDEZhnPSsCZ",
+      "id": "juuKlbDvnBDEZhnPSsCZ",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FRomance%2Ficon.svg%2Bxml?alt=media&token=04c08000-eb17-4d21-b23f-b296f4f72688"
+    },
+    {
+      "name": "Entertainment",
+      "url": "https://www.nosisapp.com/category/entertainment-k14LxLGF8ifyk7nimkh0",
+      "id": "k14LxLGF8ifyk7nimkh0",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FEntertainment%2Ficon.svg%2Bxml?alt=media&token=07896402-d4e6-43fe-a507-27c4776026d2"
+    },
+    {
+      "name": "Biographies",
+      "url": "https://www.nosisapp.com/category/biographies--orrH5MPMtkkqhlfluG4N",
+      "id": "orrH5MPMtkkqhlfluG4N",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FBiographies%20%2Ficon.svg%2Bxml?alt=media&token=217d8eb1-9431-4763-864b-db3f4c48d7e0"
+    },
+    {
+      "name": "Health & Nutrition",
+      "url": "https://www.nosisapp.com/category/health-&-nutrition--qBGc4v7evcJvhjaVdANU",
+      "id": "qBGc4v7evcJvhjaVdANU",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FHealth%20%26%20Nutrition%20%2Ficon.svg%2Bxml?alt=media&token=ae036568-174f-4eec-8680-63d668fca274"
+    },
+    {
+      "name": "Self-Help",
+      "url": "https://www.nosisapp.com/category/self-help-t5P13tsNRu11He1L87zn",
+      "id": "t5P13tsNRu11He1L87zn",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FSelf-Help%2Ficon.svg%2Bxml?alt=media&token=c0fa44a4-7842-4779-8fce-ced2ddb97124"
+    },
+    {
+      "name": "Psychology",
+      "url": "https://www.nosisapp.com/category/psychology-ujBZHgRnGBFCoJKjfYZ3",
+      "id": "ujBZHgRnGBFCoJKjfYZ3",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FPsychology%2Ficon.svg%2Bxml?alt=media&token=64bb1384-2a7d-4aba-956e-ed08fae3b4a3"
+    },
+    {
+      "name": "Finance & Investments",
+      "url": "https://www.nosisapp.com/category/finance-&-investments-zp6rMQxtoVwybLKZ8IEd",
+      "id": "zp6rMQxtoVwybLKZ8IEd",
+      "icon": "https://firebasestorage.googleapis.com/v0/b/noted-handler-444709-e0.firebasestorage.app/o/categories%2FFinance%20%26%20Investments%2Ficon.svg%2Bxml?alt=media&token=d2b324a7-c85c-4583-a8a6-8ff58f7204d6"
+    }
+  ]
+}
