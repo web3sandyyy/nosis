@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import books from "@/constants/books";
 import { ArrowLeft } from "lucide-react";
@@ -6,24 +7,26 @@ import BookContents from "@/components/bookPage/BookContents";
 import BookBanner from "@/components/bookPage/BookBanner";
 import Link from "next/link";
 import { generateSlug } from "@/helper";
+import { notFound } from "next/navigation";
 
-const page = ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+// Export a function for generating static paths
+export async function generateStaticParams() {
+  return books.map((book) => ({
+    slug: generateSlug(book.title),
+  }));
+}
+
+// The actual page component
+export default async function Page(props: any) {
+  // Extract slug from params
+  const { params } = props;
+  const slug = params?.slug;
 
   const book = books.find((book) => generateSlug(book.title) === slug);
 
+  // Use Next.js's notFound function for missing books
   if (!book) {
-    return (
-      <div className="p-4 sm:p-8 max-w-7xl mx-auto">
-        <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">
-          Book not found
-        </h2>
-        <p>Could not find a book matching slug: {slug}</p>
-        <Link href="/" className="text-blue-500 mt-2 sm:mt-4 block">
-          Back to home
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   return (
@@ -54,6 +57,4 @@ const page = ({ params }: { params: { slug: string } }) => {
       </div>
     </div>
   );
-};
-
-export default page;
+}

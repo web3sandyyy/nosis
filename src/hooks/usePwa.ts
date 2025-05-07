@@ -3,10 +3,20 @@
 import { useState, useEffect } from "react";
 import { getInstallStatus } from "@/app/actions";
 
+// Define the proper type for BeforeInstallPromptEvent
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  readonly userChoice: Promise<{
+    outcome: "accepted" | "dismissed";
+    platform: string;
+  }>;
+  prompt(): Promise<void>;
+}
+
 interface PWAStatus {
   isInstallable: boolean;
   isInstalled: boolean;
-  installPromptEvent: any | null;
+  installPromptEvent: BeforeInstallPromptEvent | null;
 }
 
 export function usePwa() {
@@ -39,7 +49,7 @@ export function usePwa() {
     };
 
     // Listen for beforeinstallprompt event
-    const handleBeforeInstallPrompt = (e: Event) => {
+    const handleBeforeInstallPrompt = (e: BeforeInstallPromptEvent) => {
       e.preventDefault();
       setStatus((prev) => ({
         ...prev,
@@ -48,7 +58,10 @@ export function usePwa() {
       }));
     };
 
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    window.addEventListener(
+      "beforeinstallprompt",
+      handleBeforeInstallPrompt as EventListener
+    );
     window.addEventListener("appinstalled", () => {
       setStatus((prev) => ({ ...prev, isInstalled: true }));
     });
@@ -58,7 +71,7 @@ export function usePwa() {
     return () => {
       window.removeEventListener(
         "beforeinstallprompt",
-        handleBeforeInstallPrompt
+        handleBeforeInstallPrompt as EventListener
       );
     };
   }, []);

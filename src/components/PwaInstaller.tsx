@@ -3,6 +3,16 @@
 import { useEffect, useState } from "react";
 import { usePwa } from "@/hooks/usePwa";
 
+// Define MSStream type for Safari detection
+interface ExtendedWindow extends Window {
+  MSStream?: unknown;
+}
+
+// Define extended navigator for standalone property
+interface ExtendedNavigator extends Navigator {
+  standalone?: boolean;
+}
+
 export function PwaInstaller() {
   const { isInstallable, isInstalled, installApp } = usePwa();
 
@@ -11,10 +21,12 @@ export function PwaInstaller() {
   // Detect iOS devices (which don't support beforeinstallprompt)
   useEffect(() => {
     const isIOS =
-      /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+      /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+      !(window as ExtendedWindow).MSStream;
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     const isStandalone =
-      "standalone" in window.navigator && (window.navigator as any).standalone;
+      "standalone" in window.navigator &&
+      (window.navigator as ExtendedNavigator).standalone;
 
     if (isIOS && isSafari && !isStandalone && !isInstalled) {
       setShowIOSInstructions(true);
@@ -106,8 +118,8 @@ export function PwaInstaller() {
             <p className="text-gray-600 mb-4">To install this app on iOS:</p>
             <ol className="list-decimal pl-5 mb-4 text-gray-600">
               <li>Tap the Share button in Safari</li>
-              <li>Scroll down and tap "Add to Home Screen"</li>
-              <li>Tap "Add" in the upper right corner</li>
+              <li>Scroll down and tap &quot;Add to Home Screen&quot;</li>
+              <li>Tap &quot;Add&quot; in the upper right corner</li>
             </ol>
             <button
               onClick={() => setShowIOSInstructions(false)}

@@ -1,26 +1,42 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import books from "@/constants/books";
 import { generateSlug } from "@/helper";
 import Link from "next/link";
 import ReadingNav from "@/components/bookPage/ReadingNav";
+import { notFound } from "next/navigation";
 
-const page = ({ params }: { params: { slugtwo: string; slug: string[] } }) => {
-  const bookSlug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
-  const contentIndex = parseInt(params.slugtwo);
+// Export a function for generating static paths
+export async function generateStaticParams() {
+  const paths = [];
+
+  for (const book of books) {
+    const bookSlug = generateSlug(book.title);
+
+    if (book.contents) {
+      for (let i = 0; i < book.contents.length; i++) {
+        paths.push({
+          slug: bookSlug,
+          slugtwo: i.toString(),
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+// The actual page component
+export default async function Page(props: any) {
+  const { params } = props;
+  const { slug: bookSlug, slugtwo } = params;
+  const contentIndex = parseInt(slugtwo);
+
   const book = books.find((book) => generateSlug(book.title) === bookSlug);
 
+  // Use Next.js's notFound function for missing books
   if (!book) {
-    return (
-      <div className="p-4 sm:p-8">
-        <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">
-          Book not found
-        </h2>
-        <p>Could not find a book matching slug: {bookSlug}</p>
-        <Link href="/" className="text-blue-500 mt-2 sm:mt-4 block">
-          Back to home
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   if (
@@ -29,20 +45,7 @@ const page = ({ params }: { params: { slugtwo: string; slug: string[] } }) => {
     !book.contents ||
     contentIndex >= book.contents.length
   ) {
-    return (
-      <div className="p-4 sm:p-8">
-        <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">
-          Content not found
-        </h2>
-        <p>Could not find content at index: {params.slugtwo}</p>
-        <Link
-          href={`/book/${bookSlug}`}
-          className="text-blueAccent mt-2 sm:mt-4 block"
-        >
-          Back to book details
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   const content = book.contents[contentIndex];
@@ -79,6 +82,4 @@ const page = ({ params }: { params: { slugtwo: string; slug: string[] } }) => {
       </div>
     </>
   );
-};
-
-export default page;
+}

@@ -1,12 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export function ServiceWorkerRegistration() {
-  const [isRegistered, setIsRegistered] = useState(false);
-  const [registration, setRegistration] =
-    useState<ServiceWorkerRegistration | null>(null);
-
   useEffect(() => {
     if (typeof window === "undefined" || !("serviceWorker" in navigator)) {
       return;
@@ -17,8 +13,6 @@ export function ServiceWorkerRegistration() {
         const reg = await navigator.serviceWorker.register("/sw.js");
 
         console.log("Service worker registered successfully", reg);
-        setIsRegistered(true);
-        setRegistration(reg);
 
         // Log when the service worker update is found
         reg.addEventListener("updatefound", () => {
