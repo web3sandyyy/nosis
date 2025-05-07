@@ -86,7 +86,7 @@ const SidebarComponent = () => {
   ];
 
   return (
-    <SidebarProvider className="w-fit bg-amber-300">
+    <SidebarProvider className={`w-fit bg-amber-300 ${pathname.includes("reading") ? "hidden" : ""}`}>
       <Sidebar className=" p-4 py-6 bg-primary">
         <SidebarHeader className="bg-primary p-0">
           <Image

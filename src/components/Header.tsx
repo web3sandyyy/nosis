@@ -8,12 +8,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 const Header = () => {
   const [search, setSearch] = useState("");
+  const pathname = usePathname();
 
   return (
-    <div className="flex justify-end p-4 bg-primary gap-6 shadow-sm  sticky top-0">
+    <div className={`flex justify-between items-center md:justify-end p-2 md:p-4  bg-primary gap-6 shadow-sm  sticky top-0 ${pathname.includes("reading") ? "hidden" : ""}`}>
+      <Image src={"/logo.svg"} alt="logo" width={100} height={20} className="w-fit h-6 md:hidden" />
       <div className="bg-white rounded-md flex items-center px-2 w-3/5 max-w-[350px]">
         <Search className="w-5 h-5 text-black/50" />
         <input
@@ -30,7 +33,7 @@ const Header = () => {
         />
       </div>
 
-      <div className="flex gap-4">
+      <div className="gap-4 hidden md:flex ">
         <Select>
           <SelectTrigger className="bg-white">
             <span className="text-black/50">

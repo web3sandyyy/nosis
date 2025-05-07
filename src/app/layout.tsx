@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <div className="min-h-[100vh] w-full flex">
           <SidebarComponent />
-          <div className="flex-1">
+          <div className="w-full">
             <Header />
             <div className="min-h-[calc(100dvh-69px)] w-full bg-secondary">
               {children}

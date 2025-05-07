@@ -4,22 +4,22 @@ import categories from "@/constants/categories";
 const Categories = () => {
   return (
     <div className="w-full">
-      <p className="text-2xl font-bold">Categories</p>
+      <p className="text-xl md:text-2xl font-bold">Categories</p>
 
-      <div className="flex flex-wrap gap-4 mt-6">
+      <div className="flex flex-wrap gap-2 md:gap-4 mt-4 md:mt-6">
         {categories.map((category) => (
           <div
             key={category.en}
-            className="flex items-center gap-2 bg-white px-4 py-3 rounded-xl border border-black/10 shadow-sm shadow-black/10 hover:scale-105 transition-all duration-200"
+            className="flex items-center gap-2 bg-white px-3 py-2 md:px-4 md:py-3 rounded-xl border border-black/10 shadow-sm shadow-black/10 hover:scale-105 transition-all duration-200"
           >
             <img
               src={category.icon}
               alt={category.en}
               width={20}
               height={20}
-              className="min-h-5 min-w-5"
+              className="min-h-4 min-w-4 md:min-h-5 md:min-w-5 "
             />
-            <p className="text-base font-medium">{category.en}</p>
+            <p className="text-sm md:text-base font-medium">{category.en}</p>
           </div>
         ))}
       </div>
