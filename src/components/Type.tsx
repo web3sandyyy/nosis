@@ -7,9 +7,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
+import Link from "next/link";
 
 interface TypeProps {
   typename: string;
@@ -50,9 +49,9 @@ const Type = ({ typename, typeDescription, css }: TypeProps) => {
         </div>
       </div>
 
-      <CarouselContent className="flex ">
+      <CarouselContent className="flex pt-3">
         {bookCards.map((book, idx) => (
-          <CarouselItem key={idx} className=" ">
+          <CarouselItem key={idx} className="hover:translate-y-[-10px] z-10 transition-all duration-200">
             <Card className=" border max-w-[500px] p-8 flex justify-between rounded-2xl bg-sky-50 shadow-md">
               <CardContent className="flex gap-3 p-0 ">
                 <div className="min-w-fit h-full rounded-xl overflow-hidden bg-white mb-2">
@@ -67,7 +66,7 @@ const Type = ({ typename, typeDescription, css }: TypeProps) => {
 
                 <div className="flex flex-col justify-between">
                   <div className="flex flex-col gap-2">
-                    <p className="font-semibold text-xl leading-tight line-clamp-2">
+                    <p className="font-semibold text-xl text-blueAccent  leading-tight line-clamp-2">
                       {book.title}
                     </p>
                     <p className="text-sm text-muted-foreground font-medium">
@@ -83,9 +82,9 @@ const Type = ({ typename, typeDescription, css }: TypeProps) => {
                       <Clock width="16" height="16" />
                       {book.time} mins
                     </span>
-                    <button className="px-5 py-2 rounded-lg bg-blueAccent text-white font-semibold text-sm hover:bg-blueAccent/90 transition">
+                    <Link href={`/book`} className="px-5 py-2 rounded-lg bg-blueAccent text-white font-semibold text-sm hover:bg-blueAccent/90 transition">
                       Read Book
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </CardContent>

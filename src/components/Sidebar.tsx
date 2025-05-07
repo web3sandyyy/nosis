@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import {
   SidebarProvider,
   Sidebar,
@@ -23,10 +23,11 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 
 const SidebarComponent = () => {
-  const [selected, setSelected] = useState("Home");
-    
+  const router = useRouter();
+  const pathname = usePathname();
 
   const menuItems = [
     {
@@ -37,12 +38,12 @@ const SidebarComponent = () => {
     {
       label: "Explore",
       icon: <SearchIcon className="w-5 h-5" />,
-      href: "/",
+      href: "/explore",
     },
     {
       label: "Library",
       icon: <LibraryIcon className="w-5 h-5" />,
-      href: "/",
+      href: "/library",
     },
   ];
 
@@ -100,8 +101,18 @@ const SidebarComponent = () => {
         <SidebarContent className="bg-primary">
           <SidebarMenu className="mt-4 font-medium">
             {menuItems.map((item) => (
-              <SidebarMenuItem onClick={() => setSelected(item.label)} key={item.label} className="p-1">
-                <SidebarMenuButton className={`${selected === item.label ? "font-semibold " : "opacity-50 hover:opacity-80"}  flex-row gap-2`}>
+              <SidebarMenuItem
+                onClick={() => router.push(item.href)}
+                key={item.label}
+                className="p-1"
+              >
+                <SidebarMenuButton
+                  className={`${
+                    pathname === item.href
+                      ? "font-semibold "
+                      : "opacity-50 hover:opacity-80"
+                  }  flex-row gap-2`}
+                >
                   <span>{item.icon}</span> {item.label}
                 </SidebarMenuButton>
               </SidebarMenuItem>
