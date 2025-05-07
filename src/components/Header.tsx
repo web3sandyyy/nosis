@@ -15,7 +15,7 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <div className={`flex justify-between items-center md:justify-end p-2 md:p-4  bg-primary gap-6 shadow-sm  sticky top-0 ${pathname.includes("reading") ? "hidden" : ""}`}>
+    <div className={`flex justify-between items-center md:justify-end p-2 md:p-4  bg-primary gap-6 shadow-sm  z-50 sticky top-0 ${pathname.includes("reading") ? "hidden" : ""}`}>
       <Image src={"/logo.svg"} alt="logo" width={100} height={20} className="w-fit h-6 md:hidden" />
       <div className="bg-white rounded-md flex items-center px-2 w-3/5 max-w-[350px]">
         <Search className="w-5 h-5 text-black/50" />
