@@ -5,12 +5,31 @@ import AboutAuthor from "@/components/bookPage/AboutAuthor";
 import BookContents from "@/components/bookPage/BookContents";
 import BookBanner from "@/components/bookPage/BookBanner";
 import Link from "next/link";
-const book = books[0];
+import { generateSlug } from "@/helper";
 
-const page = () => {
+const page = ({ params }: { params: { slug: string } }) => {
+  const { slug } = params;
+
+  const book = books.find((book) => generateSlug(book.title) === slug);
+
+  if (!book) {
+    return (
+      <div className="p-8">
+        <h2 className="text-xl font-bold mb-4">Book not found</h2>
+        <p>Could not find a book matching slug: {slug}</p>
+        <Link href="/" className="text-blue-500 mt-4 block">
+          Back to home
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-full w-full bg-secondary">
-      <Link href="/" className="flex items-center gap-2 p-6 text-black opacity-50 hover:opacity-100 transition-all duration-200">
+      <Link
+        href="/"
+        className="flex items-center gap-2 p-6 text-black opacity-50 hover:opacity-100 transition-all duration-200"
+      >
         <ArrowLeft className="w-4 h-4" />
         <p>back</p>
       </Link>
@@ -23,7 +42,7 @@ const page = () => {
             <p className="text-black/50 leading-relaxed">{book.preface}</p>
           </div>
 
-          <BookContents contents={book.contents} />
+          <BookContents contents={book.contents} bookTitle={book.title} />
           <AboutAuthor author={book.author} aboutAuthor={book.aboutAuthor} />
         </div>
       </div>
