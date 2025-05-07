@@ -33,7 +33,9 @@ export default function RootLayout({
           <SidebarComponent />
           <div className="flex-1">
             <Header />
-            {children}
+            <div className="min-h-[calc(100dvh-69px)] w-full bg-secondary">
+              {children}
+            </div>
           </div>
 
         </div>
