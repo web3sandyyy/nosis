@@ -24,6 +24,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import logo from "@/assets/logo.svg"
 
 const SidebarComponent = () => {
   const router = useRouter();
@@ -90,7 +91,7 @@ const SidebarComponent = () => {
       <Sidebar className=" p-4 py-6 bg-primary">
         <SidebarHeader className="bg-primary p-0">
           <Image
-            src={"/logo.svg"}
+            src={logo}
             alt="logo"
             width={100}
             height={100}

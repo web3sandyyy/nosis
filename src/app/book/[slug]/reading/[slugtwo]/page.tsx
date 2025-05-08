@@ -4,6 +4,7 @@ import books from "@/constants/books";
 import { generateSlug } from "@/helper";
 import Link from "next/link";
 import ReadingNav from "@/components/bookPage/ReadingNav";
+import GeneratePartSummary from "@/components/bookPage/GeneratePartSummary";
 import { notFound } from "next/navigation";
 
 // Export a function for generating static paths
@@ -58,6 +59,12 @@ export default async function Page(props: any) {
         <div
           className="content-center prose prose-sm sm:prose-base mx-auto"
           dangerouslySetInnerHTML={{ __html: content.data }}
+        />
+
+        {/* AI Summary Generator */}
+        <GeneratePartSummary
+          book={{ title: book.title, author: book.author }}
+          part={content}
         />
 
         <div className="flex justify-between mt-8 sm:mt-12 mb-6 sm:mb-8">

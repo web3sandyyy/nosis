@@ -8,6 +8,7 @@ import BookBanner from "@/components/bookPage/BookBanner";
 import Link from "next/link";
 import { generateSlug } from "@/helper";
 import { notFound } from "next/navigation";
+import GenerateSummary from "@/components/bookPage/GenerateSummary";
 
 // Export a function for generating static paths
 export async function generateStaticParams() {
@@ -49,6 +50,8 @@ export default async function Page(props: any) {
                 {book.preface}
               </p>
             </div>
+
+            <GenerateSummary book={book} />
 
             <BookContents contents={book.contents} bookTitle={book.title} />
             <AboutAuthor author={book.author} aboutAuthor={book.aboutAuthor} />
