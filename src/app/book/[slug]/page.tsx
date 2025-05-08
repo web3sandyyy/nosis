@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import books from "@/constants/books";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Bot } from "lucide-react";
 import AboutAuthor from "@/components/bookPage/AboutAuthor";
 import BookContents from "@/components/bookPage/BookContents";
 import BookBanner from "@/components/bookPage/BookBanner";
@@ -9,6 +9,7 @@ import Link from "next/link";
 import { generateSlug } from "@/helper";
 import { notFound } from "next/navigation";
 import GenerateSummary from "@/components/bookPage/GenerateSummary";
+import BookConversation from "@/components/bookPage/BookConversation";
 
 // Export a function for generating static paths
 export async function generateStaticParams() {
@@ -51,7 +52,32 @@ export default async function Page(props: any) {
               </p>
             </div>
 
-            <GenerateSummary book={book} />
+            {/* AI Assistant Section */}
+            <div className="mb-8">
+              <div className="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-lg border border-indigo-100 p-6 shadow-sm">
+                <div className="flex items-center gap-2 mb-4">
+                  <Bot className="w-5 h-5 text-indigo-600" />
+                  <h2 className="text-xl font-bold text-indigo-900">
+                    AI Book Assistant
+                  </h2>
+                </div>
+
+                <p className="text-gray-700 mb-6">
+                  Enhance your reading experience with our AI tools that can
+                  generate summaries and answer questions about &ldquo;
+                  {book.title}&rdquo; by {book.author}.
+                </p>
+
+                <div className="flex flex-col gap-3 justify-center">
+                  <div className="w-full sm:w-1/2 mx-auto">
+                    <BookConversation book={book} />
+                  </div>
+                  <GenerateSummary book={book} />
+                </div>
+              </div>
+            </div>
+
+            <div id="book-summary-section"></div>
 
             <BookContents contents={book.contents} bookTitle={book.title} />
             <AboutAuthor author={book.author} aboutAuthor={book.aboutAuthor} />

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Sparkles, Loader2 } from "lucide-react";
 import axios from "axios";
+import { Button } from "../ui/button";
 
 interface GenerateSummaryProps {
   book: {
@@ -101,65 +102,59 @@ const GenerateSummary = ({ book }: GenerateSummaryProps) => {
   };
 
   return (
-    <div className="mb-8 p-4 bg-gray-50 rounded-lg border">
-      <div className="flex flex-col space-y-4">
-        <div className="flex justify-between items-center">
-          <h3 className="font-bold text-lg">AI Summary Generator</h3>
-          <button
-            onClick={generateSummary}
-            disabled={isGenerating}
-            className="flex items-center gap-2 px-4 py-2 bg-blueAccent text-white rounded-md hover:bg-blueAccent/80 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-          >
-            {isGenerating ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Generating...
-              </>
-            ) : (
-              <>
-                <Sparkles className="w-4 h-4" />
-                Generate AI Summary
-              </>
-            )}
-          </button>
+    <div className="w-full flex flex-col space-y-4">
+        <Button
+          onClick={generateSummary}
+          disabled={isGenerating}
+          className="flex items-center gap-2 px-4 py-2 bg-blueAccent text-white rounded-md hover:bg-blueAccent/80 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors w-full sm:w-1/2 mx-auto"
+        >
+          {isGenerating ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin" />
+              Generating...
+            </>
+          ) : (
+            <>
+              <Sparkles className="w-4 h-4" />
+              Generate AI Summary
+            </>
+          )}
+        </Button>
+
+      {isGenerating && (
+        <div className="mt-4">
+          <div className="w-full bg-gray-200 rounded-full h-2.5">
+            <div
+              className="bg-blueAccent h-2.5 rounded-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          <p className="text-sm text-center mt-2">
+            Processing part {Math.ceil((progress / 100) * book.contents.length)}{" "}
+            of {book.contents.length}...
+          </p>
         </div>
+      )}
 
-        {isGenerating && (
-          <div className="mt-4">
-            <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div
-                className="bg-blueAccent h-2.5 rounded-full transition-all duration-300"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-            <p className="text-sm text-center mt-2">
-              Processing part{" "}
-              {Math.ceil((progress / 100) * book.contents.length)} of{" "}
-              {book.contents.length}...
-            </p>
-          </div>
-        )}
+      {error && (
+        <div className="mt-4 p-4 bg-red-50 text-red-800 rounded-lg border border-red-200">
+          <h4 className="font-bold mb-2">Error</h4>
+          <p>{error}</p>
+        </div>
+      )}
 
-        {error && (
-          <div className="mt-4 p-4 bg-red-50 text-red-800 rounded-lg border border-red-200">
-            <h4 className="font-bold mb-2">Error</h4>
-            <p>{error}</p>
+      {generatedSummary && (
+        <div className="mt-4 p-4 bg-white rounded-lg border">
+          <h4 className="font-bold mb-2">AI-Generated Summary</h4>
+          <div className="prose prose-sm max-w-none">
+            {generatedSummary.split("\n").map((paragraph, idx) => (
+              <p key={idx} className="mb-2">
+                {paragraph}
+              </p>
+            ))}
           </div>
-        )}
-
-        {generatedSummary && (
-          <div className="mt-4 p-4 bg-white rounded-lg border">
-            <h4 className="font-bold mb-2">AI-Generated Summary</h4>
-            <div className="prose prose-sm max-w-none">
-              {generatedSummary.split("\n").map((paragraph, idx) => (
-                <p key={idx} className="mb-2">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

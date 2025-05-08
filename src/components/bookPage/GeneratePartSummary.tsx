@@ -71,7 +71,6 @@ const GeneratePartSummary = ({ book, part }: GeneratePartSummaryProps) => {
     <div className="my-6 p-4 bg-gray-50 rounded-lg border">
       <div className="flex flex-col space-y-4">
         <div className="flex justify-between items-center">
-          <h3 className="font-bold text-lg">AI Summary</h3>
           <button
             onClick={generateSummary}
             disabled={isGenerating}
