@@ -111,7 +111,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
     if (isOpen && !hasInitialized) {
       initializeConversation();
     }
-  }, [isOpen, hasInitialized, initializeConversation]);
+  }, [isOpen, hasInitialized]);
 
   // Handle user question submission
   const handleSubmit = async (e: React.FormEvent) => {
