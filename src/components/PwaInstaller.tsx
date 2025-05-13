@@ -13,12 +13,17 @@ interface ExtendedNavigator extends Navigator {
   standalone?: boolean;
 }
 
+// Component that displays PWA installation button and instructions
+// Handles different installation flows for various platforms
 export function PwaInstaller() {
+  // Get PWA installation status and methods from custom hook
   const { isInstallable, isInstalled, installApp } = usePwa();
 
+  // State to control visibility of iOS-specific installation instructions
   const [showIOSInstructions, setShowIOSInstructions] = useState(false);
 
-  // Detect iOS devices (which don't support beforeinstallprompt)
+  // Detect iOS devices and show appropriate installation UI
+  // iOS doesn't support standard PWA installation prompt
   useEffect(() => {
     const isIOS =
       /iPad|iPhone|iPod/.test(navigator.userAgent) &&
@@ -33,7 +38,7 @@ export function PwaInstaller() {
     }
   }, [isInstalled]);
 
-  // Handle app installation
+  // Handle installation button click based on platform capabilities
   const handleInstallClick = async () => {
     if (isInstallable) {
       await installApp();
@@ -42,14 +47,14 @@ export function PwaInstaller() {
     }
   };
 
-  // If already installed, don't show anything
+  // Don't show anything if app is already installed
   if (isInstalled) {
     return null;
   }
 
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
-      {/* Install App Button */}
+      {/* Install App Button with download icon */}
       <button
         onClick={handleInstallClick}
         className="flex items-center gap-2 rounded-full bg-blue-600 text-white px-4 py-2 shadow-lg hover:bg-blue-700 transition-colors"
@@ -95,7 +100,7 @@ export function PwaInstaller() {
         Download App
       </button>
 
-      {/* iOS Installation Instructions */}
+      {/* iOS Installation Instructions Modal */}
       {showIOSInstructions && (
         <div
           className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4"
@@ -104,6 +109,7 @@ export function PwaInstaller() {
           aria-labelledby="ios-install-title"
         >
           <div className="bg-white rounded-lg p-6 max-w-sm w-full relative">
+            {/* Close button for modal */}
             <button
               onClick={() => setShowIOSInstructions(false)}
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
@@ -125,6 +131,7 @@ export function PwaInstaller() {
               Install this app on your device
             </h3>
             <p className="text-gray-600 mb-4">To install this app on iOS:</p>
+            {/* Step-by-step installation instructions */}
             <ol className="list-decimal pl-5 mb-4 text-gray-600">
               <li>Tap the Share button in Safari</li>
               <li>Scroll down and tap &quot;Add to Home Screen&quot;</li>

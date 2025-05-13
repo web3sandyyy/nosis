@@ -8,30 +8,36 @@ import { Book as BookType } from "@/utils/types";
 import NosisIcon from "./NosisIcon";
 import { generateSlug } from "@/helper";
 
+// Props for the BooksMonthCard component
 interface BooksMonthCardProps {
   book: BookType;
   bgColor: string;
 }
 
+// Individual card component for displaying featured books of the month
+// Includes book cover, details and action buttons on colored background
 const BooksMonthCard = ({ book, bgColor }: BooksMonthCardProps) => {
   return (
     <div
       className={`rounded-lg p-4 flex gap-4 relative overflow-hidden ${bgColor}`}
       key={book.id}
     >
+      {/* Book cover image */}
       <Image
         src={decodeURIComponent(book.image)}
-        alt={`${book.title}`}
+        alt={`Book cover for ${book.title} by ${book.author}`}
         width={200}
         height={300}
         className="max-w-[100px] md:max-w-[160px] h-fit object-cover rounded-lg "
       />
       <div className="flex flex-col gap-4">
+        {/* Book title and metadata */}
         <p className="sm:text-xl text-lg font-bold line-clamp-2">
           {book.title}
         </p>
         <p className="text-muted-foreground">{book.author}</p>
         <p className="text-sm">{book.time} mins</p>
+        {/* Action buttons: Read and Bookmark */}
         <div className="flex items-center gap-2">
           <Link
             href={`/book/${generateSlug(book.title)}`}
@@ -50,19 +56,24 @@ const BooksMonthCard = ({ book, bgColor }: BooksMonthCardProps) => {
             Bookmark
           </Button>
         </div>
+        {/* Book description (desktop only) */}
         <p className="text-sm line-clamp-2 hidden sm:block">{book.preface}</p>
       </div>
 
+      {/* Decorative background logo */}
       <NosisIcon
         color="black"
         width={400}
         height={400}
         className="h-4/5 w-auto absolute bottom-0 right-0 opacity-5"
+        aria-hidden={true}
       />
     </div>
   );
 };
 
+// Main component that displays featured books of the month
+// Shows up to 2 books with different background colors
 const BooksMonth = () => {
   // Only use the first 2 books
   const featuredBooks = books.slice(0, 2);

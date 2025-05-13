@@ -1,5 +1,7 @@
 import React from "react";
 
+// Props interface for the NosisIcon SVG component
+// Includes styling options and accessibility attributes
 interface NosisIconProps {
   color?: string;
   width?: number | string;
@@ -8,6 +10,8 @@ interface NosisIconProps {
   "aria-hidden"?: boolean;
 }
 
+// SVG icon component for the Nosis logo
+// Used for branding and decorative elements throughout the app
 const NosisIcon = ({
   color = "currentColor",
   width = 24,

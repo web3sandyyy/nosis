@@ -27,10 +27,13 @@ import { usePathname, useRouter } from "next/navigation";
 import logo from "@/assets/logo.svg";
 import { Button } from "./ui/button";
 
+// Main sidebar navigation component
+// Provides app navigation, social links, and user actions
 const SidebarComponent = () => {
   const router = useRouter();
   const pathname = usePathname();
 
+  // Primary navigation menu items with icons and routes
   const menuItems = [
     {
       label: "Home",
@@ -49,6 +52,7 @@ const SidebarComponent = () => {
     },
   ];
 
+  // Footer navigation menu items with icons
   const footerItems = [
     {
       label: "Request more books",
@@ -67,6 +71,7 @@ const SidebarComponent = () => {
     },
   ];
 
+  // Social media links with icons
   const socialItems = [
     {
       icon: <Twitter className="w-5 h-5" aria-hidden="true" />,
@@ -92,6 +97,7 @@ const SidebarComponent = () => {
       }`}
     >
       <Sidebar className=" p-4 py-6 bg-primary">
+        {/* Sidebar header with logo */}
         <SidebarHeader className="bg-primary p-0">
           <Image
             src={logo}
@@ -102,6 +108,7 @@ const SidebarComponent = () => {
           />
         </SidebarHeader>
 
+        {/* Main navigation menu */}
         <SidebarContent className="bg-primary">
           <SidebarMenu className="mt-4 font-medium">
             {menuItems.map((item) => (
@@ -126,13 +133,16 @@ const SidebarComponent = () => {
           </SidebarMenu>
         </SidebarContent>
 
+        {/* Sidebar footer with invite button, help links and social icons */}
         <SidebarFooter className="bg-primary">
+          {/* Invite friends button */}
           <Button
             className="w-full bg-white text-black hover:bg-white/90"
             aria-label="Invite friends"
           >
             <Gift className="w-5 h-5" aria-hidden="true" /> Invite friends
           </Button>
+          {/* Secondary navigation links */}
           <SidebarMenu className="py-2 gap-4">
             {footerItems.map((item) => (
               <SidebarMenuItem key={item.label}>
@@ -146,6 +156,7 @@ const SidebarComponent = () => {
             ))}
           </SidebarMenu>
 
+          {/* Social media links */}
           <SidebarMenu className="flex-row  ">
             {socialItems.map((item, index) => (
               <SidebarMenuItem key={index} className="w-fit">

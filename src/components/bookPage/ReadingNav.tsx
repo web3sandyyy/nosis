@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { generateSlug } from "@/helper";
 
+// Props interface for the ReadingNav component
 interface ReadingNavProps {
   book: {
     title: string;
@@ -21,15 +22,19 @@ interface ReadingNavProps {
   currentIndex: number;
 }
 
+// Navigation bar component for book reading view
+// Provides controls for book parts, language, and display settings
 const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
   const bookSlug = generateSlug(book.title);
+  // State for mobile menu visibility
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="bg-white shadow-sm">
-      {/* Desktop Navigation */}
+      {/* Desktop Navigation - shown on medium screens and up */}
       <div className="hidden md:flex justify-between items-center p-4">
         <div className="flex items-center gap-4">
+          {/* Back button to return to book details */}
           <Link href={`/book/${bookSlug}`} aria-label="Back to book details">
             <ArrowLeft className="w-4 h-4" aria-hidden="true" />
           </Link>
@@ -44,6 +49,7 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
         </div>
 
         <div className="flex gap-4">
+          {/* Language selector dropdown */}
           <Select>
             <SelectTrigger
               className="bg-white w-[110px]"
@@ -61,6 +67,7 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
             </SelectContent>
           </Select>
 
+          {/* Book part selector dropdown */}
           <Select defaultValue={String(currentIndex)}>
             <SelectTrigger
               className="bg-white w-[150px]"
@@ -77,6 +84,7 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
             </SelectContent>
           </Select>
 
+          {/* Reading settings button */}
           <button
             className="bg-blueAccent text-white px-4 py-2 text-sm h-fit rounded-md flex items-center gap-2"
             aria-label="Customize reading settings"
@@ -86,10 +94,11 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - shown on small screens */}
       <div className="md:hidden">
         <div className="flex justify-between items-center p-3">
           <div className="flex items-center gap-2">
+            {/* Back button for mobile */}
             <Link href={`/book/${bookSlug}`} aria-label="Back to book details">
               <ArrowLeft className="w-4 h-4" aria-hidden="true" />
             </Link>
@@ -99,6 +108,7 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
           </div>
 
           <div className="flex items-center gap-2">
+            {/* Book part selector for mobile */}
             <Select defaultValue={String(currentIndex)}>
               <SelectTrigger
                 className="bg-white h-8 text-xs min-w-0 w-[80px] px-2"
@@ -124,6 +134,7 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
               </SelectContent>
             </Select>
 
+            {/* Menu toggle button for mobile */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-1.5 rounded-md bg-gray-100"
@@ -139,7 +150,7 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown Menu - shown when menu is toggled */}
         {mobileMenuOpen && (
           <div className="p-3 border-t bg-gray-50 flex flex-col gap-2">
             <p className="text-xs text-black/50">
@@ -147,6 +158,7 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
             </p>
 
             <div className="flex gap-2 mt-1">
+              {/* Language selector for mobile */}
               <Select>
                 <SelectTrigger
                   className="bg-white h-8 text-xs flex-1"
@@ -168,6 +180,7 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
                 </SelectContent>
               </Select>
 
+              {/* Reading settings button for mobile */}
               <button
                 className="bg-blueAccent text-white px-2 py-1 text-xs h-8 rounded-md flex items-center gap-1"
                 aria-label="Customize reading settings"

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
+// Props interface for book conversation component
 interface BookConversationProps {
   book: {
     title: string;
@@ -20,16 +21,20 @@ interface BookConversationProps {
   };
 }
 
+// Message type definition for chat history
 interface Message {
   role: "user" | "assistant";
   content: string;
 }
 
+// Component that provides AI-powered Q&A about the book content
 const BookConversation = ({ book }: BookConversationProps) => {
+  // Dialog and conversation state
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [hasInitialized, setHasInitialized] = useState(false);
   const [question, setQuestion] = useState("");
+  // Initial welcome message from the assistant
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
@@ -38,7 +43,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
   ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Initialize conversation once when modal opens
+  // Initialize conversation by feeding book content to the AI
   const initializeConversation = async () => {
     if (hasInitialized || !isOpen) return;
 
@@ -54,7 +59,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
         startNewConversation: true,
       });
 
-      // Feed each part to the API
+      // Feed each part of the book content to the AI
       for (const part of book.contents) {
         // Clean and truncate content
         const content = part.data.replace(/<[^>]*>/g, "");
@@ -82,6 +87,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
       setHasInitialized(true);
     } catch (error) {
       console.error("Error initializing conversation:", error);
+      // Display error message to user if initialization fails
       setMessages((prev) => [
         ...prev,
         {
@@ -95,18 +101,19 @@ const BookConversation = ({ book }: BookConversationProps) => {
     }
   };
 
-  // Scroll to bottom of messages when messages change
+  // Auto-scroll to newest messages when chat updates
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Initialize conversation when dialog opens
+  // Start conversation initialization when dialog opens
   useEffect(() => {
     if (isOpen && !hasInitialized) {
       initializeConversation();
     }
   }, [isOpen, hasInitialized, initializeConversation]);
 
+  // Handle user question submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -115,7 +122,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
     const userQuestion = question.trim();
     setQuestion("");
 
-    // Add user question to messages
+    // Add user question to chat history
     setMessages((prev) => [
       ...prev,
       {
@@ -124,10 +131,11 @@ const BookConversation = ({ book }: BookConversationProps) => {
       },
     ]);
 
-    // Show loading indicator
+    // Show loading indicator while waiting for AI response
     setIsLoading(true);
 
     try {
+      // Send user question to AI and get response
       const response = await axios.post("/api/gemini", {
         prompt: userQuestion,
         startNewConversation: false,
@@ -137,7 +145,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
         throw new Error("No response data");
       }
 
-      // Add AI response to messages
+      // Add AI response to chat history
       setMessages((prev) => [
         ...prev,
         {
@@ -147,6 +155,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
       ]);
     } catch (error) {
       console.error("Error sending message:", error);
+      // Display error message if AI response fails
       setMessages((prev) => [
         ...prev,
         {
@@ -162,6 +171,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
 
   return (
     <div className="w-full sm:w-1/2 mx-auto">
+      {/* Main button to open the conversation dialog */}
       <Button
         onClick={() => setIsOpen(true)}
         className="bg-purple-600 hover:bg-purple-700 w-full"
@@ -171,17 +181,19 @@ const BookConversation = ({ book }: BookConversationProps) => {
         Ask Questions
       </Button>
 
+      {/* Dialog containing the conversation UI */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-2xl max-h-[80vh] flex flex-col">
           <DialogHeader>
             <DialogTitle>Ask about &ldquo;{book.title}&rdquo;</DialogTitle>
           </DialogHeader>
 
-          {/* Chat Messages */}
+          {/* Chat message history container */}
           <div
             className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 rounded-md my-4"
             style={{ minHeight: "300px" }}
           >
+            {/* Map through and display all messages */}
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -201,6 +213,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
               </div>
             ))}
 
+            {/* Loading indicator shown while waiting for AI response */}
             {isLoading && (
               <div className="flex justify-start">
                 <div className="max-w-[80%] p-3 rounded-lg bg-white border rounded-tl-none">
@@ -215,11 +228,12 @@ const BookConversation = ({ book }: BookConversationProps) => {
               </div>
             )}
 
+            {/* Invisible element for scrolling to the latest message */}
             <div ref={messagesEndRef} />
           </div>
 
           <DialogFooter className="flex items-center gap-2">
-            {/* Input Form */}
+            {/* Question input form */}
             <form
               onSubmit={handleSubmit}
               className="flex items-center gap-2 w-full"
@@ -245,7 +259,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
             </form>
           </DialogFooter>
 
-          {/* Initialization Status */}
+          {/* Loading state indicator shown during initial content loading */}
           {isOpen && !hasInitialized && (
             <div className="p-2 bg-amber-50 border-t border-amber-100 text-amber-800 text-center text-sm rounded-md">
               <div className="flex items-center justify-center gap-2">

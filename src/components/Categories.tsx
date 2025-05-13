@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ChevronUp } from "lucide-react";
 
 const Categories = () => {
+  // Track expanded state and screen size
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,7 +15,7 @@ const Categories = () => {
   const maxLines = 3;
   const itemsToShow = itemsPerLine * maxLines;
 
-  // Check if screen is mobile size
+  // Check if screen is mobile size and update state accordingly
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768); // 768px is the md breakpoint in Tailwind
@@ -30,7 +31,7 @@ const Categories = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  // Calculate the actual height of items
+  // Calculate the container height based on mobile/expanded state
   const getContainerStyle = () => {
     if (!isMobile) return {}; // No height restriction on larger screens
 
@@ -52,6 +53,7 @@ const Categories = () => {
           className="flex flex-wrap gap-2 md:gap-4 transition-all duration-500 ease-in-out overflow-hidden"
           style={getContainerStyle()}
         >
+          {/* Map through category items and render each with icon and label */}
           {categories.map((category) => (
             <div
               key={category.en}
@@ -72,6 +74,7 @@ const Categories = () => {
         </div>
       </div>
 
+      {/* Show/hide toggle button only on mobile when there are many categories */}
       {isMobile && categories.length > itemsToShow && (
         <button
           onClick={() => setShowAll(!showAll)}

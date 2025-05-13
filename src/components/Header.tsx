@@ -12,7 +12,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import logo from "@/assets/logo.svg";
 
+// Header component with search, language selector and sign-in button
+// Hides when on reading pages
 const Header = () => {
+  // State for search input
   const [search, setSearch] = useState("");
   const pathname = usePathname();
 
@@ -22,6 +25,7 @@ const Header = () => {
         pathname.includes("reading") ? "hidden" : ""
       }`}
     >
+      {/* Logo shown only on mobile */}
       <Image
         src={logo}
         alt="Nosis logo"
@@ -29,6 +33,7 @@ const Header = () => {
         height={20}
         className="w-fit h-6 md:hidden"
       />
+      {/* Search bar with icon and clear button */}
       <div className="bg-white rounded-md flex items-center px-2 w-3/5 max-w-[350px]">
         <Search className="w-5 h-5 text-black/50" aria-hidden="true" />
         <input
@@ -47,7 +52,9 @@ const Header = () => {
         />
       </div>
 
+      {/* Right side controls: language selector and sign-in button */}
       <div className="gap-4 flex ">
+        {/* Language selector dropdown (hidden on mobile) */}
         <div className="hidden sm:block">
           <Select>
             <SelectTrigger className="bg-white" aria-label="Select language">
@@ -64,6 +71,7 @@ const Header = () => {
           </Select>
         </div>
 
+        {/* Sign in button */}
         <button
           className="p-1 text-sm font-medium rounded-md text-white px-4 bg-blueAccent hover:bg-blueAccent/80 whitespace-nowrap"
           aria-label="Sign in to your account"
