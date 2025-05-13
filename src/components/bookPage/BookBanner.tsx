@@ -3,6 +3,7 @@ import { Bookmark, Book, Clock, BookOpen } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import NosisIcon from "@/components/NosisIcon";
 
 const BookBanner = ({
   book,
@@ -12,24 +13,22 @@ const BookBanner = ({
   slug: string;
 }) => {
   return (
-    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 pb-6 sm:pb-8 md:pb-12 px-8">
-      <div className="relative w-full sm:w-[150px] md:w-[200px] h-[225px] md:h-[300px] mx-auto sm:mx-0">
+    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pb-6 sm:pb-8  px-6 sm:px-8 relative">
         <Image
           src={decodeURIComponent(book.image)}
           alt={book.title}
-          className="object-cover rounded-lg shadow-md min-w-[200px]  h-full"
+          className="object-cover rounded-lg shadow-md w-[200px] h-auto mx-auto sm:mx-0"
           priority
           height={300}
           width={400}
         />
-      </div>
 
       <div className="min-h-full flex flex-col justify-between pt-4 sm:pt-0">
         <div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2 leading-tight text-center sm:text-left">
+          <h1 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight text-center sm:text-left">
             {book.title}
           </h1>
-          <div className="text-base sm:text-lg text-black/50 mb-1 sm:mb-2 text-center sm:text-left">
+          <div className="text-base sm:text-lg text-black/50 mb-1 sm:mb-2 text-center sm:text-left mt-2 sm:mt-0">
             {book.author}
           </div>
           <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-4 text-xs sm:text-sm text-black/50 mb-3 sm:mb-4">
@@ -55,7 +54,7 @@ const BookBanner = ({
           </div>
         </div>
 
-        <div className="flex gap-2 flex-col sm:flex-row justify-center sm:justify-start mt-4 sm:mt-0">
+        <div className=" hidden md:flex gap-2 flex-col sm:flex-row justify-center sm:justify-start mt-4 sm:mt-0">
           <Link
             href={`/book/${slug}/reading/0`}
             className="bg-blueAccent text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold shadow hover:bg-blueAccent/90 flex items-center justify-center gap-2"
@@ -67,6 +66,13 @@ const BookBanner = ({
           </button>
         </div>
       </div>
+
+      <NosisIcon
+        color="black"
+        width={400}
+        height={400}
+        className="h-4/5 w-auto hidden sm:block absolute bottom-0 right-0 opacity-5"
+      />
     </div>
   );
 };

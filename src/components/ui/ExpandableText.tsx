@@ -59,7 +59,7 @@ const ExpandableText: React.FC<ExpandableTextProps> = ({
           className="mt-2 text-blueAccent font-medium text-sm focus:outline-none px-4 py-2 rounded-md hover:bg-primary/50 transition-all duration-200"
         >
           <span className="flex items-center">
-            {expanded ? <>Show less</> : <>Show more</>}
+            {expanded ? <>See less</> : <>See more</>}
             <ChevronUp
               className={`w-4 h-4 ml-1 transition-transform duration-300 ${
                 expanded ? "" : "rotate-180"

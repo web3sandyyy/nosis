@@ -105,7 +105,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
     if (isOpen && !hasInitialized) {
       initializeConversation();
     }
-  }, [isOpen, hasInitialized]);
+  }, [isOpen, hasInitialized, initializeConversation]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

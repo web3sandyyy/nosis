@@ -12,6 +12,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import logo from "@/assets/logo.svg"
 
+
 const Header = () => {
   const [search, setSearch] = useState("");
   const pathname = usePathname();
@@ -35,9 +36,10 @@ const Header = () => {
         />
       </div>
 
-      <div className="gap-4 hidden md:flex ">
-        <Select>
-          <SelectTrigger className="bg-white">
+      <div className="gap-4 flex ">
+        <div className="hidden sm:block">
+          <Select>
+            <SelectTrigger className="bg-white">
             <span className="text-black/50">
               <Languages className="w-5 h-5" />
             </span>
@@ -47,9 +49,11 @@ const Header = () => {
             <SelectItem value="light">English</SelectItem>
             <SelectItem value="dark">Hindi</SelectItem>
             <SelectItem value="system">Bahasa Indonesia</SelectItem>
-          </SelectContent>
-        </Select>
-        <button className="p-1 text-sm font-medium rounded-md text-white px-4 bg-blueAccent hover:bg-blueAccent/80">
+            </SelectContent>
+          </Select>
+        </div>
+
+        <button className="p-1 text-sm font-medium rounded-md text-white px-4 bg-blueAccent hover:bg-blueAccent/80 whitespace-nowrap">
           Sign In
         </button>
       </div>

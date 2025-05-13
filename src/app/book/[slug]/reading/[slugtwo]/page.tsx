@@ -6,6 +6,7 @@ import Link from "next/link";
 import ReadingNav from "@/components/bookPage/ReadingNav";
 import GeneratePartSummary from "@/components/bookPage/GeneratePartSummary";
 import { notFound } from "next/navigation";
+import "@/app/contentCenter.css";
 
 // Export a function for generating static paths
 export async function generateStaticParams() {

@@ -139,3 +139,13 @@
     rgb(107, 204, 222) 100%
   );
 }
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+
+

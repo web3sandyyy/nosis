@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="w-full h-full p-6 bg-secondary">
+    <div className="w-full h-full p-4 md:p-6 bg-secondary">
       {/* <TypeCarousel
         typename="Healthy Living"
         typeDescription="Healthy Living books are designed to educate and inspire readers"
@@ -24,9 +24,8 @@ export default function Home() {
 
       <TypeCarousel
         typename="Readers' Choice"
-        typeDescription="Favorite books chosen by loyal readers."
       >
-        <CarouselContent className="flex pt-3">
+        <CarouselContent className="flex pt-2 md:pt-4">
           {books.map((book, idx) => (
             <BookCards key={idx} book={book} idx={idx} />
           ))}
@@ -36,6 +35,14 @@ export default function Home() {
       <Categories />
 
       <BooksMonth />
+
+      <TypeCarousel typename="Featured Books" css="mt-6 md:mt-10">
+        <CarouselContent className="flex pt-2 md:pt-4">
+          {books.map((book, idx) => (
+            <BookCards key={idx} book={book} idx={idx} />
+          ))}
+        </CarouselContent>
+      </TypeCarousel>
 
       <CuratedPathways />
 

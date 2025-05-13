@@ -14,7 +14,7 @@ const BookCards = ({ book, idx }: { book: Book; idx: number }) => {
     >
       <Link
         href={`/book/${generateSlug(book.title)}`}
-        className="max-w-[200px] block" 
+        className="w-[140px] sm:max-w-[200px] block" 
       >
         <div className="relative">
 
@@ -23,7 +23,7 @@ const BookCards = ({ book, idx }: { book: Book; idx: number }) => {
           alt={book.title}
           width={400}
           height={500}
-          className="w-[200px] h-full object-cover rounded-lg"
+          className="w-full h-full object-cover rounded-lg"
         />
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/30 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200">
 

@@ -18,13 +18,14 @@ import {
   CircleHelpIcon,
   Users,
   CircleUserIcon,
-  Scale,
+  Gift,
   Twitter,
   Instagram,
   Linkedin,
 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import logo from "@/assets/logo.svg"
+import { Button } from "./ui/button";
 
 const SidebarComponent = () => {
   const router = useRouter();
@@ -62,11 +63,6 @@ const SidebarComponent = () => {
     {
       label: "My Account",
       icon: <CircleUserIcon className="w-5 h-5" />,
-      href: "/",
-    },
-    {
-      label: "Legal Center",
-      icon: <Scale className="w-5 h-5" />,
       href: "/",
     },
   ];
@@ -122,6 +118,9 @@ const SidebarComponent = () => {
         </SidebarContent>
 
         <SidebarFooter className="bg-primary">
+          <Button className="w-full bg-white text-black hover:bg-white/90">
+            <Gift className="w-5 h-5" /> Invite friends
+          </Button>
           <SidebarMenu className="py-2 gap-4">
             {footerItems.map((item) => (
               <SidebarMenuItem key={item.label}>
