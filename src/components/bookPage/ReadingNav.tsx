@@ -30,8 +30,8 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
       {/* Desktop Navigation */}
       <div className="hidden md:flex justify-between items-center p-4">
         <div className="flex items-center gap-4">
-          <Link href={`/book/${bookSlug}`}>
-            <ArrowLeft className="w-4 h-4" />
+          <Link href={`/book/${bookSlug}`} aria-label="Back to book details">
+            <ArrowLeft className="w-4 h-4" aria-hidden="true" />
           </Link>
 
           <div>
@@ -45,9 +45,12 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
 
         <div className="flex gap-4">
           <Select>
-            <SelectTrigger className="bg-white w-[110px]">
+            <SelectTrigger
+              className="bg-white w-[110px]"
+              aria-label="Select language"
+            >
               <span className="text-black/50">
-                <Languages className="w-5 h-5" />
+                <Languages className="w-5 h-5" aria-hidden="true" />
               </span>
               <SelectValue placeholder="Language" />
             </SelectTrigger>
@@ -59,7 +62,10 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
           </Select>
 
           <Select defaultValue={String(currentIndex)}>
-            <SelectTrigger className="bg-white w-[150px]">
+            <SelectTrigger
+              className="bg-white w-[150px]"
+              aria-label="Select part"
+            >
               <SelectValue placeholder={`Part ${currentIndex + 1}`} />
             </SelectTrigger>
             <SelectContent className="max-w-[250px]">
@@ -71,8 +77,11 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
             </SelectContent>
           </Select>
 
-          <button className="bg-blueAccent text-white px-4 py-2 text-sm h-fit rounded-md flex items-center gap-2">
-            <Settings2 className="w-4 h-4" /> Customize
+          <button
+            className="bg-blueAccent text-white px-4 py-2 text-sm h-fit rounded-md flex items-center gap-2"
+            aria-label="Customize reading settings"
+          >
+            <Settings2 className="w-4 h-4" aria-hidden="true" /> Customize
           </button>
         </div>
       </div>
@@ -81,8 +90,8 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
       <div className="md:hidden">
         <div className="flex justify-between items-center p-3">
           <div className="flex items-center gap-2">
-            <Link href={`/book/${bookSlug}`}>
-              <ArrowLeft className="w-4 h-4" />
+            <Link href={`/book/${bookSlug}`} aria-label="Back to book details">
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
             </Link>
             <p className="text-sm font-medium truncate max-w-[180px]">
               {book.title}
@@ -91,7 +100,10 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
 
           <div className="flex items-center gap-2">
             <Select defaultValue={String(currentIndex)}>
-              <SelectTrigger className="bg-white h-8 text-xs min-w-0 w-[80px] px-2">
+              <SelectTrigger
+                className="bg-white h-8 text-xs min-w-0 w-[80px] px-2"
+                aria-label="Select part"
+              >
                 <SelectValue placeholder={`Part ${currentIndex + 1}`} />
               </SelectTrigger>
               <SelectContent
@@ -115,11 +127,13 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-1.5 rounded-md bg-gray-100"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
-                <X className="w-4 h-4" />
+                <X className="w-4 h-4" aria-hidden="true" />
               ) : (
-                <Menu className="w-4 h-4" />
+                <Menu className="w-4 h-4" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -134,8 +148,11 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
 
             <div className="flex gap-2 mt-1">
               <Select>
-                <SelectTrigger className="bg-white h-8 text-xs flex-1">
-                  <Languages className="w-3 h-3 mr-1" />
+                <SelectTrigger
+                  className="bg-white h-8 text-xs flex-1"
+                  aria-label="Select language"
+                >
+                  <Languages className="w-3 h-3 mr-1" aria-hidden="true" />
                   <SelectValue placeholder="Language" />
                 </SelectTrigger>
                 <SelectContent align="start" className="w-[120px] z-50">
@@ -151,8 +168,11 @@ const ReadingNav = ({ book, currentIndex }: ReadingNavProps) => {
                 </SelectContent>
               </Select>
 
-              <button className="bg-blueAccent text-white px-2 py-1 text-xs h-8 rounded-md flex items-center gap-1">
-                <Settings2 className="w-3 h-3" /> Customize
+              <button
+                className="bg-blueAccent text-white px-2 py-1 text-xs h-8 rounded-md flex items-center gap-1"
+                aria-label="Customize reading settings"
+              >
+                <Settings2 className="w-3 h-3" aria-hidden="true" /> Customize
               </button>
             </div>
           </div>

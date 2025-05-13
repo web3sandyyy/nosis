@@ -5,6 +5,7 @@ interface NosisIconProps {
   width?: number | string;
   height?: number | string;
   className?: string;
+  "aria-hidden"?: boolean;
 }
 
 const NosisIcon = ({
@@ -12,6 +13,7 @@ const NosisIcon = ({
   width = 24,
   height = 24,
   className = "",
+  "aria-hidden": ariaHidden = false,
 }: NosisIconProps) => {
   return (
     <svg
@@ -22,6 +24,8 @@ const NosisIcon = ({
       viewBox="72 133 174 196"
       xmlns="http://www.w3.org/2000/svg"
       version="1.0"
+      role="img"
+      aria-hidden={ariaHidden}
     >
       <g
         stroke="none"

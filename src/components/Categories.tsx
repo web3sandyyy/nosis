@@ -60,7 +60,7 @@ const Categories = () => {
               <div className="relative h-5 w-5 flex-shrink-0">
                 <Image
                   src={category.icon}
-                  alt={category.en}
+                  alt={`${category.en}`}
                   width={20}
                   height={20}
                   className="min-h-4 min-w-4 md:min-h-5 md:min-w-5"
@@ -76,12 +76,17 @@ const Categories = () => {
         <button
           onClick={() => setShowAll(!showAll)}
           className="mt-2 text-blueAccent font-medium text-sm focus:outline-none px-4 py-2 rounded-md hover:bg-primary/50 transition-all duration-200 flex items-center"
+          aria-label={
+            showAll ? "Show fewer categories" : "Show more categories"
+          }
+          aria-expanded={showAll}
         >
           {showAll ? "Show less" : "Show more"}
           <ChevronUp
             className={`w-4 h-4 ml-1 transition-transform duration-300 ${
               showAll ? "" : "rotate-180"
             }`}
+            aria-hidden="true"
           />
         </button>
       )}

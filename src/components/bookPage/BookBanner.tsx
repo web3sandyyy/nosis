@@ -14,14 +14,14 @@ const BookBanner = ({
 }) => {
   return (
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pb-6 sm:pb-8  px-6 sm:px-8 relative">
-        <Image
-          src={decodeURIComponent(book.image)}
-          alt={book.title}
-          className="object-cover rounded-lg shadow-md w-[200px] h-auto mx-auto sm:mx-0"
-          priority
-          height={300}
-          width={400}
-        />
+      <Image
+        src={decodeURIComponent(book.image)}
+        alt={`${book.title}`}
+        className="object-cover rounded-lg shadow-md w-[200px] h-auto mx-auto sm:mx-0"
+        priority
+        height={300}
+        width={400}
+      />
 
       <div className="min-h-full flex flex-col justify-between pt-4 sm:pt-0">
         <div>
@@ -33,13 +33,13 @@ const BookBanner = ({
           </div>
           <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-4 text-xs sm:text-sm text-black/50 mb-3 sm:mb-4">
             <span className="flex items-center gap-1 sm:gap-2">
-              <Book className="w-3 h-3 sm:w-4 sm:h-4" />
-              {book.parts} parts
+              <Book className="w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
+              <span>{book.parts} parts</span>
             </span>
             <span>•</span>
             <span className="flex items-center gap-1 sm:gap-2">
-              <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
-              {book.time} mins
+              <Clock className="w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
+              <span>{book.time} mins</span>
             </span>
           </div>
           <div className="flex flex-wrap justify-center sm:justify-start gap-2 mb-4">
@@ -58,11 +58,17 @@ const BookBanner = ({
           <Link
             href={`/book/${slug}/reading/0`}
             className="bg-blueAccent text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold shadow hover:bg-blueAccent/90 flex items-center justify-center gap-2"
+            aria-label={`Start reading ${book.title}`}
           >
-            <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" /> Read
+            <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />{" "}
+            Read
           </Link>
-          <button className="border border-gray-300 px-4 sm:px-6 py-2 sm:py-3 bg-white rounded-xl font-semibold text-gray-700 hover:bg-gray-100 flex items-center justify-center gap-2">
-            <Bookmark className="w-3 h-3 sm:w-4 sm:h-4" /> Bookmark
+          <button
+            className="border border-gray-300 px-4 sm:px-6 py-2 sm:py-3 bg-white rounded-xl font-semibold text-gray-700 hover:bg-gray-100 flex items-center justify-center gap-2"
+            aria-label={`Bookmark ${book.title}`}
+          >
+            <Bookmark className="w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />{" "}
+            Bookmark
           </button>
         </div>
       </div>

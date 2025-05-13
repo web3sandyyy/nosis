@@ -21,7 +21,7 @@ const BooksMonthCard = ({ book, bgColor }: BooksMonthCardProps) => {
     >
       <Image
         src={decodeURIComponent(book.image)}
-        alt={book.title}
+        alt={`${book.title}`}
         width={200}
         height={300}
         className="max-w-[100px] md:max-w-[160px] h-fit object-cover rounded-lg "
@@ -36,15 +36,17 @@ const BooksMonthCard = ({ book, bgColor }: BooksMonthCardProps) => {
           <Link
             href={`/book/${generateSlug(book.title)}`}
             className="flex items-center gap-2 bg-blueAccent px-4 py-2 rounded-lg hover:bg-blueAccent/80 transition-all duration-200 text-white text-sm font-semibold"
+            aria-label={`Read ${book.title}`}
           >
-            <Book className="w-4 h-4" />
+            <Book className="w-4 h-4" aria-hidden="true" />
             Read
           </Link>
           <Button
             variant="outline"
             className="flex items-center gap-2 px-4 py-2"
+            aria-label={`Bookmark ${book.title}`}
           >
-            <Bookmark />
+            <Bookmark aria-hidden="true" />
             Bookmark
           </Button>
         </div>

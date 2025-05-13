@@ -20,7 +20,7 @@ const ColoredCard = ({ book, idx }: { book: Book; idx: number }) => {
             <div className="min-w-fit h-full rounded-xl overflow-hidden bg-white mb-2">
               <Image
                 src={decodeURIComponent(book.image)}
-                alt={book.title}
+                alt={`${book.title}`}
                 width={110}
                 height={150}
                 className="object-cover w-full h-full border shadow-sm"
@@ -42,12 +42,13 @@ const ColoredCard = ({ book, idx }: { book: Book; idx: number }) => {
 
               <div className="flex flex-col-reverse md:flex-row md:items-center justify-between mt-2 gap-4 md:gap-0">
                 <span className="text-xs text-muted-foreground flex items-center gap-1">
-                  <Clock width="16" height="16" />
-                  {book.time} mins
+                  <Clock width="16" height="16" aria-hidden="true" />
+                  <span>{book.time} mins</span>
                 </span>
                 <Link
                   href={`/book/${generateSlug(book.title)}`}
                   className="px-5 py-2 rounded-lg bg-blueAccent text-white font-semibold text-sm hover:bg-blueAccent/90 transition"
+                  aria-label={`Read ${book.title}`}
                 >
                   Read Book
                 </Link>

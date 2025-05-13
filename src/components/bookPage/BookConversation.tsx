@@ -165,8 +165,9 @@ const BookConversation = ({ book }: BookConversationProps) => {
       <Button
         onClick={() => setIsOpen(true)}
         className="bg-purple-600 hover:bg-purple-700 w-full"
+        aria-label="Ask questions about this book"
       >
-        <MessageCircle className="w-4 h-4 mr-2" />
+        <MessageCircle className="w-4 h-4 mr-2" aria-hidden="true" />
         Ask Questions
       </Button>
 
@@ -204,7 +205,10 @@ const BookConversation = ({ book }: BookConversationProps) => {
               <div className="flex justify-start">
                 <div className="max-w-[80%] p-3 rounded-lg bg-white border rounded-tl-none">
                   <div className="flex items-center">
-                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                    <Loader2
+                      className="w-4 h-4 animate-spin mr-2"
+                      aria-hidden="true"
+                    />
                     <p>Thinking...</p>
                   </div>
                 </div>
@@ -227,14 +231,16 @@ const BookConversation = ({ book }: BookConversationProps) => {
                 placeholder="Ask a question about the book..."
                 className="flex-1 border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blueAccent"
                 disabled={isLoading || !hasInitialized}
+                aria-label="Ask a question about the book"
               />
               <Button
                 type="submit"
                 disabled={
                   isLoading || question.trim() === "" || !hasInitialized
                 }
+                aria-label="Send question"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-5 h-5" aria-hidden="true" />
               </Button>
             </form>
           </DialogFooter>
@@ -243,7 +249,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
           {isOpen && !hasInitialized && (
             <div className="p-2 bg-amber-50 border-t border-amber-100 text-amber-800 text-center text-sm rounded-md">
               <div className="flex items-center justify-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin" />
+                <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
                 <p>Loading book content... Please wait</p>
               </div>
             </div>

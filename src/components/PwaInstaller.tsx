@@ -53,6 +53,7 @@ export function PwaInstaller() {
       <button
         onClick={handleInstallClick}
         className="flex items-center gap-2 rounded-full bg-blue-600 text-white px-4 py-2 shadow-lg hover:bg-blue-700 transition-colors"
+        aria-label="Download app to your device"
       >
         <svg
           width="20"
@@ -60,6 +61,7 @@ export function PwaInstaller() {
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
         >
           <path
             d="M12 16L12 8"
@@ -95,11 +97,17 @@ export function PwaInstaller() {
 
       {/* iOS Installation Instructions */}
       {showIOSInstructions && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
+        <div
+          className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="ios-install-title"
+        >
           <div className="bg-white rounded-lg p-6 max-w-sm w-full relative">
             <button
               onClick={() => setShowIOSInstructions(false)}
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              aria-label="Close installation instructions"
             >
               <svg
                 width="24"
@@ -108,11 +116,12 @@ export function PwaInstaller() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
+                aria-hidden="true"
               >
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>
-            <h3 className="text-lg font-bold mb-4">
+            <h3 className="text-lg font-bold mb-4" id="ios-install-title">
               Install this app on your device
             </h3>
             <p className="text-gray-600 mb-4">To install this app on iOS:</p>
@@ -124,6 +133,7 @@ export function PwaInstaller() {
             <button
               onClick={() => setShowIOSInstructions(false)}
               className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+              aria-label="Close installation instructions"
             >
               Close
             </button>
