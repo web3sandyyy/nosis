@@ -131,3 +131,11 @@
     rgb(228, 245, 255) 100%
   );
 }
+
+.curated-pathways {
+  background: linear-gradient(
+    135deg,
+    rgb(139, 143, 255) 0%,
+    rgb(107, 204, 222) 100%
+  );
+}

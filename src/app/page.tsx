@@ -1,30 +1,30 @@
 import Categories from "@/components/Categories";
 import TypeCarousel from "@/components/TypeCarousel";
 import books from "@/constants/books";
-import ColoredCard from "@/components/ColoredCard";
 import BookCards from "@/components/BookCards";
 import { CarouselContent } from "@/components/ui/carousel";
+import BooksMonth from "@/components/BooksMonth";
+import CuratedPathways from "@/components/CuratedPathways";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <div className="w-full h-full p-6 bg-secondary">
-      <Categories />
-      <TypeCarousel
+      {/* <TypeCarousel
         typename="Healthy Living"
         typeDescription="Healthy Living books are designed to educate and inspire readers"
         css="mt-10"
-      >
+        >
         <CarouselContent className="flex pt-3">
-          {books.map((book, idx) => (
-            <ColoredCard key={idx} book={book} idx={idx} />
+        {books.map((book, idx) => (
+          <ColoredCard key={idx} book={book} idx={idx} />
           ))}
-        </CarouselContent>
-      </TypeCarousel>
+          </CarouselContent>
+          </TypeCarousel> */}
 
       <TypeCarousel
         typename="Readers' Choice"
         typeDescription="Favorite books chosen by loyal readers."
-        css="mt-10"
       >
         <CarouselContent className="flex pt-3">
           {books.map((book, idx) => (
@@ -32,6 +32,14 @@ export default function Home() {
           ))}
         </CarouselContent>
       </TypeCarousel>
+
+      <Categories />
+
+      <BooksMonth />
+
+      <CuratedPathways />
+
+      <Footer />
     </div>
   );
 }

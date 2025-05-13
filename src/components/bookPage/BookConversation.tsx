@@ -161,7 +161,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
   };
 
   return (
-    <>
+    <div className="w-full sm:w-1/2 mx-auto">
       <Button
         onClick={() => setIsOpen(true)}
         className="bg-purple-600 hover:bg-purple-700 w-full"
@@ -250,7 +250,7 @@ const BookConversation = ({ book }: BookConversationProps) => {
           )}
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 };
 

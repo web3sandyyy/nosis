@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Categories = () => {
   return (
-    <div className="w-full">
+    <div className="w-full mt-8">
       <p className="text-xl md:text-2xl font-bold">Categories</p>
 
       <div className="flex flex-wrap gap-2 md:gap-4 mt-4 md:mt-6">

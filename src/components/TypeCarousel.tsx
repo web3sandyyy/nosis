@@ -7,9 +7,10 @@ import {
 
 interface TypeProps {
   typename: string;
-  typeDescription: string;
+  typeDescription?: string;
   css?: string;
   children: React.ReactNode;
+  hideButtons?: boolean;
 }
 
 const TypeCarousel = ({
@@ -17,6 +18,7 @@ const TypeCarousel = ({
   typeDescription,
   css,
   children,
+  hideButtons = false,
 }: TypeProps) => {
   return (
     <Carousel
@@ -28,14 +30,18 @@ const TypeCarousel = ({
       <div className="mb-2 flex">
         <div className="flex-grow ">
           <p className="text-xl md:text-2xl font-bold mb-1">{typename}</p>
-          <p className="text-sm md:text-base text-muted-foreground mb-4">
-            {typeDescription}
-          </p>
+          {typeDescription && (
+            <p className="text-sm md:text-base text-muted-foreground mb-4">
+              {typeDescription}
+            </p>
+          )}
         </div>
-        <div className="flex items-center gap-2">
-          <CarouselPrevious className="bg-white rounded-full p-1 shadow-sm" />
-          <CarouselNext className="bg-white rounded-full p-1 shadow-sm" />
-        </div>
+        {!hideButtons && (
+          <div className="flex items-center gap-2">
+            <CarouselPrevious className="bg-white rounded-full p-1 shadow-sm" />
+            <CarouselNext className="bg-white rounded-full p-1 shadow-sm" />
+          </div>
+        )}
       </div>
       {children}
     </Carousel>

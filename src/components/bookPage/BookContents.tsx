@@ -1,7 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { generateSlug } from "@/helper";
+import { generateSlug, romanNumber } from "@/helper";
 
 interface BookContentsProps {
   contents: { name: string; data: string }[];
@@ -22,7 +22,7 @@ const BookContents = ({ contents, bookTitle }: BookContentsProps) => {
             className={`flex items-center gap-2 sm:gap-4 px-3 sm:px-4 py-2 sm:py-3 border-b last:border-b-0 bg-white hover:bg-gray-50`}
           >
             <span className="text-blueAccent/80 text-base sm:text-lg font-semibold">
-              Part {idx + 1}
+              Part {romanNumber(idx + 1)}
             </span>
             <span className="flex-grow text-sm sm:text-base md:text-lg font-semibold text-black/50 truncate">
               {part.name}
