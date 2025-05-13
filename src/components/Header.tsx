@@ -44,32 +44,15 @@ const Header = () => {
             <SelectValue placeholder="Language" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="light">Light</SelectItem>
-            <SelectItem value="dark">Dark</SelectItem>
-            <SelectItem value="system">System</SelectItem>
+            <SelectItem value="light">English</SelectItem>
+            <SelectItem value="dark">Hindi</SelectItem>
+            <SelectItem value="system">Bahasa Indonesia</SelectItem>
           </SelectContent>
         </Select>
         <button className="p-1 text-sm font-medium rounded-md text-white px-4 bg-blueAccent hover:bg-blueAccent/80">
           Sign In
         </button>
       </div>
-
-      {/* <div>
-        <Select>
-          <SelectTrigger className="bg-white">
-           <div className="p-2 rounded-full bg-blueAccent">
-            <User className="w-5 h-5 text-white" />
-           </div>
-          </SelectTrigger>
-
-
-          <SelectContent>
-            <SelectItem value="light">Light</SelectItem>
-            <SelectItem value="dark">Dark</SelectItem>
-            <SelectItem value="system">System</SelectItem>
-          </SelectContent>
-        </Select>
-      </div> */}
     </div>
   );
 };
