@@ -10,18 +10,6 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <div className="w-full h-full p-4 md:p-6 bg-secondary">
-      {/* <TypeCarousel
-        typename="Healthy Living"
-        typeDescription="Healthy Living books are designed to educate and inspire readers"
-        css="mt-10"
-        >
-        <CarouselContent className="flex pt-3">
-        {books.map((book, idx) => (
-          <ColoredCard key={idx} book={book} idx={idx} />
-          ))}
-          </CarouselContent>
-          </TypeCarousel> */}
-
       <TypeCarousel
         typename="Readers' Choice"
       >
